@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mohammadali Jaberi - AI Developer and Data Scientist</title>
 <meta name="description" content="Mohammadali Jaberi builds AI chatbots, machine learning systems and software that ship. RAG chatbots, LLM integration, computer vision, MLOps." />
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0b0a0d; --bg-2:#100e13; --surface:#171419; --surface-2:#1f1b23;
@@ -21,7 +22,6 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden}
-  /* subtle film grain for a premium feel */
   body::before{content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:.04;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   a{color:inherit;text-decoration:none}
@@ -29,39 +29,44 @@
   .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
   h1,h2,h3,.serif{font-family:var(--serif); font-weight:500; letter-spacing:-.01em}
 
-  /* nav */
+  /* scroll progress */
+  #progress{position:fixed; top:0; left:0; height:3px; width:100%; z-index:60; background:var(--grad); transform:scaleX(0); transform-origin:0 50%}
+
   nav{position:fixed; top:0; left:0; right:0; z-index:50; backdrop-filter:blur(14px) saturate(1.3); background:rgba(11,10,13,.6); border-bottom:1px solid transparent; transition:border-color .3s, background .3s}
   nav.scrolled{border-color:var(--line); background:rgba(11,10,13,.82)}
   .nav-in{max-width:var(--maxw); margin:0 auto; padding:17px 26px; display:flex; align-items:center; justify-content:space-between}
-  .logo{font-family:var(--serif); font-weight:600; font-size:1.12rem; letter-spacing:0}
+  .logo{font-family:var(--serif); font-weight:600; font-size:1.12rem}
   .logo span{color:var(--gold)}
   .nav-links{display:flex; gap:30px; align-items:center}
-  .nav-links a{color:var(--muted); font-size:.92rem; font-weight:500; transition:color .2s}
-  .nav-links a:hover{color:var(--text)}
-  .nav-cta{padding:9px 18px; border:1px solid var(--line-2); border-radius:999px; color:var(--text)!important}
+  .nav-links a{color:var(--muted); font-size:.92rem; font-weight:500; transition:color .2s; position:relative}
+  .nav-links a:not(.nav-cta)::after{content:""; position:absolute; left:0; bottom:-5px; height:1.5px; width:100%; background:var(--gold); transform:scaleX(0); transform-origin:0; transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+  .nav-links a:not(.nav-cta):hover{color:var(--text)} .nav-links a:not(.nav-cta):hover::after{transform:scaleX(1)}
+  .nav-cta{padding:9px 18px; border:1px solid var(--line-2); border-radius:999px; color:var(--text)!important; transition:border-color .2s,color .2s}
   .nav-cta:hover{border-color:var(--gold); color:var(--gold)!important}
   @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
 
-  /* hero */
   header{position:relative; padding:185px 0 95px; overflow:hidden}
-  .hero-bg{position:absolute; inset:0; z-index:0; pointer-events:none;
-    background:radial-gradient(640px 440px at 78% -8%, rgba(216,176,106,.16), transparent 62%), radial-gradient(520px 380px at 8% 8%, rgba(201,143,122,.10), transparent 60%)}
-  .grid-bg{position:absolute; inset:0; z-index:0; opacity:.35;
-    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size:52px 52px;
-    mask-image:radial-gradient(ellipse 72% 62% at 50% 0%,#000 28%,transparent 76%); -webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 0%,#000 28%,transparent 76%)}
+  .hero-bg{position:absolute; inset:-10%; z-index:0; pointer-events:none}
+  .hero-bg i{position:absolute; border-radius:50%; filter:blur(60px); opacity:.5}
+  .hero-bg .a1{width:46%; height:60%; left:60%; top:-20%; background:radial-gradient(circle,rgba(216,176,106,.5),transparent 70%); animation:aurora1 16s ease-in-out infinite}
+  .hero-bg .a2{width:42%; height:55%; left:-10%; top:5%; background:radial-gradient(circle,rgba(201,143,122,.4),transparent 70%); animation:aurora2 20s ease-in-out infinite}
+  @keyframes aurora1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-8%,12%) scale(1.18)}}
+  @keyframes aurora2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(10%,-8%) scale(1.12)}}
+  .grid-bg{position:absolute; inset:0; z-index:0; opacity:.35; background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size:52px 52px; mask-image:radial-gradient(ellipse 72% 62% at 50% 0%,#000 28%,transparent 76%); -webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 0%,#000 28%,transparent 76%)}
   header .wrap{position:relative; z-index:1}
   .badge{display:inline-flex; align-items:center; gap:9px; padding:8px 16px; border:1px solid var(--line-2); border-radius:999px; background:var(--surface); font-size:.82rem; color:var(--muted); margin-bottom:30px}
   .dot{width:8px; height:8px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 0 rgba(216,176,106,.6); animation:pulse 2.6s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(216,176,106,.5)}70%{box-shadow:0 0 0 10px rgba(216,176,106,0)}100%{box-shadow:0 0 0 0 rgba(216,176,106,0)}}
-  h1{font-size:clamp(2.7rem,7vw,5rem); font-weight:500; line-height:1.02}
-  h1 em{font-style:italic; font-weight:600; background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+  h1{font-size:clamp(2.7rem,7vw,5rem); font-weight:500; line-height:1.03}
+  h1 .line{display:block; overflow:hidden}
+  h1 .line>span{display:block}
+  h1 em{font-style:italic; font-weight:600; background:linear-gradient(110deg,var(--gold),var(--gold-2),var(--gold)); background-size:200% auto; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
   .hero-role{font-family:var(--sans); font-size:clamp(1.05rem,2.4vw,1.4rem); font-weight:500; color:var(--gold-2); margin-top:18px}
   .hero-lead{max-width:640px; color:var(--muted); font-size:1.12rem; margin-top:24px}
   .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-top:38px}
-  .btn{display:inline-flex; align-items:center; gap:9px; padding:14px 24px; border-radius:12px; font-family:var(--sans); font-weight:600; font-size:.95rem; transition:transform .15s, box-shadow .25s, border-color .2s, color .2s}
-  .btn:hover{transform:translateY(-2px)}
+  .btn{display:inline-flex; align-items:center; gap:9px; padding:14px 24px; border-radius:12px; font-family:var(--sans); font-weight:600; font-size:.95rem; transition:transform .2s cubic-bezier(.2,.7,.3,1), box-shadow .25s, border-color .2s, color .2s; will-change:transform}
   .btn-primary{background:var(--grad); color:#241a08; box-shadow:0 10px 34px rgba(216,176,106,.22)}
-  .btn-primary:hover{box-shadow:0 14px 40px rgba(216,176,106,.34)}
+  .btn-primary:hover{box-shadow:0 16px 44px rgba(216,176,106,.36)}
   .btn-ghost{border:1px solid var(--line-2); color:var(--text)}
   .btn-ghost:hover{border-color:var(--gold)}
   .btn svg{width:18px;height:18px}
@@ -69,27 +74,40 @@
   .stat b{display:block; font-family:var(--serif); font-size:1.7rem; font-weight:600; color:var(--gold-2)}
   .stat span{color:var(--faint); font-size:.85rem}
 
+  /* hero entrance (CSS, on load) */
+  .js h1 .line>span{transform:translateY(110%); animation:lineUp .9s cubic-bezier(.2,.7,.3,1) forwards}
+  .js h1 .line:nth-child(2)>span{animation-delay:.12s}
+  .js .hero-anim{opacity:0; animation:fadeUp .8s cubic-bezier(.2,.7,.3,1) forwards}
+  .js .badge.hero-anim{animation-delay:.05s}
+  .js .hero-role{animation-delay:.34s}
+  .js .hero-lead{animation-delay:.44s}
+  .js .hero-cta{animation-delay:.54s}
+  .js .stats{animation-delay:.64s}
+  @keyframes lineUp{to{transform:none}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes shimmer{to{background-position:-200% center}}
+
   section{padding:90px 0; position:relative}
   .sec-head{margin-bottom:48px}
   .kicker{font-family:var(--sans); font-size:.78rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gold)}
   .sec-head h2{font-size:clamp(2rem,4.4vw,2.9rem); font-weight:500; margin-top:12px}
   .sec-head p{font-family:var(--sans); color:var(--muted); margin-top:12px; max-width:580px}
 
-  /* projects */
   .projects{display:grid; grid-template-columns:repeat(2,1fr); gap:26px}
   @media(max-width:800px){.projects{grid-template-columns:1fr}}
-  .card{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; transition:transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s, box-shadow .3s}
-  .card:hover{transform:translateY(-6px); border-color:var(--line-2); box-shadow:0 24px 60px rgba(0,0,0,.5)}
+  .card{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; transition:border-color .3s, box-shadow .3s; transform-style:preserve-3d; will-change:transform}
+  .card::after{content:""; position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0; transition:opacity .3s; background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(216,176,106,.13), transparent 45%)}
+  .card:hover{border-color:var(--line-2); box-shadow:0 26px 64px rgba(0,0,0,.55)}
+  .card:hover::after{opacity:1}
   .card.span2{grid-column:span 2}
   @media(max-width:800px){.card.span2{grid-column:span 1}}
   .card-media{position:relative; background:var(--bg-2); border-bottom:1px solid var(--line); overflow:hidden}
-  .card-media img{width:100%; display:block; object-fit:cover; transition:transform .55s cubic-bezier(.2,.7,.3,1)}
-  .card:hover .card-media img{transform:scale(1.045)}
+  .card-media img{width:100%; display:block; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+  .card:hover .card-media img{transform:scale(1.05)}
   .card.span2 .card-media img{max-height:360px}
-  .card-noimg{height:128px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line);
-    background:radial-gradient(130% 150% at 0% 0%, rgba(216,176,106,.14), transparent 55%), radial-gradient(130% 150% at 100% 100%, rgba(201,143,122,.12), transparent 55%)}
+  .card-noimg{height:128px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line); background:radial-gradient(130% 150% at 0% 0%, rgba(216,176,106,.14), transparent 55%), radial-gradient(130% 150% at 100% 100%, rgba(201,143,122,.12), transparent 55%)}
   .card-noimg .mono{color:var(--gold-2); font-size:.85rem; letter-spacing:.06em; opacity:.85}
-  .card-body{padding:24px 24px 26px; display:flex; flex-direction:column; gap:13px; flex:1}
+  .card-body{padding:24px 24px 26px; display:flex; flex-direction:column; gap:13px; flex:1; position:relative; z-index:2}
   .card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px}
   .card-top h3{font-size:1.35rem; font-weight:600}
   .role{font-family:var(--sans); font-size:.72rem; font-weight:600; padding:5px 11px; border-radius:999px; white-space:nowrap; border:1px solid var(--line-2); color:var(--muted)}
@@ -107,18 +125,20 @@
 
   .more{display:grid; grid-template-columns:repeat(2,1fr); gap:13px; margin-top:26px}
   @media(max-width:680px){.more{grid-template-columns:1fr}}
-  .more a{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:17px 20px; background:var(--surface); border:1px solid var(--line); border-radius:13px; transition:border-color .25s, transform .15s; font-family:var(--sans)}
-  .more a:hover{border-color:var(--gold); transform:translateX(3px)}
+  .more a{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:17px 20px; background:var(--surface); border:1px solid var(--line); border-radius:13px; transition:border-color .25s, transform .2s cubic-bezier(.2,.7,.3,1); font-family:var(--sans)}
+  .more a:hover{border-color:var(--gold); transform:translateX(4px)}
   .more .m-t{font-weight:600}
   .more .m-d{color:var(--faint); font-size:.82rem}
   .more .arrow{color:var(--muted)}
 
   .skills{display:grid; grid-template-columns:repeat(2,1fr); gap:22px}
   @media(max-width:680px){.skills{grid-template-columns:1fr}}
-  .skill-group{background:var(--surface); border:1px solid var(--line); border-radius:15px; padding:22px 24px}
+  .skill-group{background:var(--surface); border:1px solid var(--line); border-radius:15px; padding:22px 24px; transition:transform .25s, border-color .25s}
+  .skill-group:hover{transform:translateY(-3px); border-color:var(--line-2)}
   .skill-group h4{font-family:var(--sans); font-size:.76rem; text-transform:uppercase; letter-spacing:.12em; color:var(--gold); margin-bottom:13px}
   .chips{display:flex; flex-wrap:wrap; gap:8px}
-  .chip{font-family:var(--sans); font-size:.85rem; padding:7px 13px; border-radius:9px; background:var(--surface-2); border:1px solid var(--line); color:var(--text)}
+  .chip{font-family:var(--sans); font-size:.85rem; padding:7px 13px; border-radius:9px; background:var(--surface-2); border:1px solid var(--line); color:var(--text); transition:transform .15s, color .2s, border-color .2s}
+  .chip:hover{transform:translateY(-2px); color:var(--gold-2); border-color:var(--line-2)}
 
   .about p{font-family:var(--sans); color:var(--muted); max-width:700px; font-size:1.08rem; margin-bottom:18px}
   .about strong{color:var(--text); font-weight:600}
@@ -129,12 +149,20 @@
   .contact-row{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; position:relative}
   footer{border-top:1px solid var(--line); padding:36px 0; color:var(--faint); font-size:.85rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--sans)}
 
-  .reveal{opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1)}
+  .js .reveal{opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1; transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.dot{animation:none}html{scroll-behavior:auto}.card:hover .card-media img{transform:none}}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .js .reveal,.js .hero-anim,.js h1 .line>span{opacity:1!important; transform:none!important}
+    html{scroll-behavior:auto}
+    .card:hover .card-media img{transform:none}
+  }
 </style>
 </head>
 <body>
+<div id="progress"></div>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="gh" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></symbol></svg>
 
 <nav id="nav">
   <div class="nav-in">
@@ -149,24 +177,21 @@
 </nav>
 
 <header id="top">
-  <div class="hero-bg"></div>
+  <div class="hero-bg"><i class="a1"></i><i class="a2"></i></div>
   <div class="grid-bg"></div>
   <div class="wrap">
-    <div class="badge reveal"><span class="dot"></span> Open to junior data and ML roles, and freelance work</div>
-    <h1 class="reveal">I build AI that<br>actually <em>ships</em>.</h1>
-    <div class="hero-role reveal">AI Developer and Data Scientist</div>
-    <p class="hero-lead reveal">I turn ideas into working systems: RAG chatbots grounded in your data, machine learning models, speech-to-text pipelines, and full software products. I care about getting things all the way to something people use, not just a notebook that runs once.</p>
-    <div class="hero-cta reveal">
-      <a class="btn btn-primary" href="#work">View my work</a>
-      <a class="btn btn-ghost" href="https://github.com/moaliii237" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
-        GitHub
-      </a>
-      <a class="btn btn-ghost" href="mailto:m.jaberi14979@gmail.com">Email me</a>
+    <div class="badge hero-anim"><span class="dot"></span> Open to junior data and ML roles, and freelance work</div>
+    <h1><span class="line"><span>I build AI that</span></span><span class="line"><span>actually <em>ships</em>.</span></span></h1>
+    <div class="hero-role hero-anim">AI Developer and Data Scientist</div>
+    <p class="hero-lead hero-anim">I turn ideas into working systems: RAG chatbots grounded in your data, machine learning models, speech-to-text pipelines, and full software products. I care about getting things all the way to something people use, not just a notebook that runs once.</p>
+    <div class="hero-cta hero-anim">
+      <a class="btn btn-primary magnetic" href="#work">View my work</a>
+      <a class="btn btn-ghost magnetic" href="https://github.com/moaliii237" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> GitHub</a>
+      <a class="btn btn-ghost magnetic" href="mailto:moaliii237@gmail.com">Email me</a>
     </div>
-    <div class="stats reveal">
-      <div class="stat"><b>14</b><span>public projects on GitHub</span></div>
-      <div class="stat"><b>3</b><span>shipped for real users and clients</span></div>
+    <div class="stats hero-anim">
+      <div class="stat"><b data-count="14">0</b><span>public projects on GitHub</span></div>
+      <div class="stat"><b data-count="3">0</b><span>shipped for real users and clients</span></div>
       <div class="stat"><b>End to end</b><span>data, model, deployment</span></div>
     </div>
   </div>
@@ -189,7 +214,7 @@
           <p>An offline CRM and point-of-sale desktop app I built and sell to retail shops. It runs on an embedded database and is packaged so a shop installs one file with no setup. It has its own offline license system, automatic backups, and an optional local-network mode so several computers share one live database.</p>
           <div class="result">A real product that businesses pay for, with an <b>offline Ed25519 license system</b> and automatic database backups.</div>
           <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Drizzle ORM</span><span class="tag">PostgreSQL</span><span class="tag">Electron</span><span class="tag">TypeScript</span></div>
-          <div class="card-links"><a href="https://github.com/moaliii237/euphoria-pos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/euphoria-pos" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
         </div>
       </article>
 
@@ -201,8 +226,8 @@
           <div class="result">Reached <b>88% F1 on compliance keywords</b> and a 34.6% word error rate, with no invented text.</div>
           <div class="tags"><span class="tag">Python</span><span class="tag">Whisper</span><span class="tag">Wav2Vec2</span><span class="tag">KenLM</span><span class="tag">PyTorch</span></div>
           <div class="card-links">
-            <a href="https://github.com/moaliii237/dutch-asr-sagitta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> Pipeline</a>
-            <a href="https://github.com/moaliii237/Sagitta-" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> Model training</a>
+            <a href="https://github.com/moaliii237/dutch-asr-sagitta" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> Pipeline</a>
+            <a href="https://github.com/moaliii237/Sagitta-" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> Model training</a>
           </div>
         </div>
       </article>
@@ -214,7 +239,7 @@
           <p>A U-Net finds plant roots in petri-dish photos, then the root tips are mapped into robot coordinates and a simulated lab robot is driven to each one, using both a tuned PID controller and a reinforcement-learning agent.</p>
           <div class="result">U-Net F1 <b>0.88</b>, both controllers reach <b>under 1 mm</b> in simulation.</div>
           <div class="tags"><span class="tag">PyTorch</span><span class="tag">U-Net</span><span class="tag">PyBullet</span><span class="tag">PPO</span><span class="tag">Optuna</span><span class="tag">OpenCV</span></div>
-          <div class="card-links"><a href="https://github.com/moaliii237/ot2-robotics-vision" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/ot2-robotics-vision" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
         </div>
       </article>
 
@@ -225,7 +250,7 @@
           <p>A production system that detects emotion in TV transcripts, from speech-to-text through a fine-tuned model, served by an API and deployed with Docker and Azure. My part was the continuous-retraining feedback loop and the command-line tool.</p>
           <div class="result">My loop <b>retrains on user corrections</b> and promotes a new model only when it scores higher than the live one.</div>
           <div class="tags"><span class="tag">FastAPI</span><span class="tag">DeBERTa</span><span class="tag">Whisper</span><span class="tag">Docker</span><span class="tag">Azure ML</span><span class="tag">Airflow</span></div>
-          <div class="card-links"><a href="https://github.com/moaliii237/emotion-analysis-mlops" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/emotion-analysis-mlops" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
         </div>
       </article>
 
@@ -247,7 +272,7 @@
           <p>A controlled study of how the way you cut an image into patches changes both segmentation quality and the actual measurement of root length. I trained a ResUNet across ten configurations and tested the results with proper statistics.</p>
           <div class="result">Larger patches cut measurement error from <b>24% to 14%</b>, and the best Dice score was not the most accurate at measuring length.</div>
           <div class="tags"><span class="tag">PyTorch</span><span class="tag">ResUNet</span><span class="tag">scikit-image</span><span class="tag">SciPy</span></div>
-          <div class="card-links"><a href="https://github.com/moaliii237/root-segmentation-research" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/root-segmentation-research" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
         </div>
       </article>
 
@@ -257,7 +282,7 @@
           <div class="card-top"><h3>WhatsApp RAG chatbot</h3><span class="role team">Team of 2</span></div>
           <p>A WhatsApp customer-service bot for a Dutch food cooperative. It answers product and pickup questions in Dutch and English, grounded only in the business's own data, with star reviews and order reminders. I wrote the chatbot code.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">RAG</span><span class="tag">WhatsApp API</span></div>
-          <div class="card-links"><a href="https://github.com/moaliii237/whatsapp-rag-chatbot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/whatsapp-rag-chatbot" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
         </div>
       </article>
 
@@ -309,8 +334,8 @@
       <h2>Let's work together</h2>
       <p>If you have a problem you want solved with AI, data or software, tell me about it and I will reply with a short, concrete plan.</p>
       <div class="contact-row">
-        <a class="btn btn-primary" href="mailto:m.jaberi14979@gmail.com">m.jaberi14979@gmail.com</a>
-        <a class="btn btn-ghost" href="https://github.com/moaliii237" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-primary magnetic" href="mailto:moaliii237@gmail.com">moaliii237@gmail.com</a>
+        <a class="btn btn-ghost magnetic" href="https://github.com/moaliii237" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </div>
@@ -322,10 +347,67 @@
 </footer>
 
 <script>
-  const nav=document.getElementById('nav');
-  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10));
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*55)+'ms';io.observe(el)});
+(function(){
+  var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('nav'), bar = document.getElementById('progress'), doc = document.documentElement;
+  function onScroll(){
+    nav.classList.toggle('scrolled', scrollY > 10);
+    var max = doc.scrollHeight - doc.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // scroll reveals
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el,i){ el.style.transitionDelay = (Math.min(i,6)*55) + 'ms'; io.observe(el); });
+
+  if (rm) return; // everything below is motion; respect reduced-motion
+
+  // count-up stats
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return; cio.unobserve(e.target);
+      var el = e.target, target = +el.dataset.count, t0 = null, dur = 1300;
+      function step(t){ if(!t0) t0 = t; var p = Math.min((t - t0)/dur, 1);
+        el.textContent = Math.round((1 - Math.pow(1-p,3)) * target);
+        if(p < 1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+  }, {threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+
+  // 3D tilt + cursor spotlight on cards
+  document.querySelectorAll('.card').forEach(function(card){
+    var raf = null;
+    card.addEventListener('pointermove', function(ev){
+      if(matchMedia('(pointer:coarse)').matches) return;
+      var r = card.getBoundingClientRect(), x = (ev.clientX - r.left)/r.width, y = (ev.clientY - r.top)/r.height;
+      card.style.setProperty('--mx', (x*100)+'%'); card.style.setProperty('--my', (y*100)+'%');
+      if(raf) return;
+      raf = requestAnimationFrame(function(){
+        card.style.transform = 'perspective(900px) rotateX(' + ((.5-y)*5).toFixed(2) + 'deg) rotateY(' + ((x-.5)*5).toFixed(2) + 'deg) translateY(-6px)';
+        raf = null;
+      });
+    });
+    card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+  });
+
+  // magnetic buttons
+  document.querySelectorAll('.magnetic').forEach(function(b){
+    b.addEventListener('pointermove', function(ev){
+      if(matchMedia('(pointer:coarse)').matches) return;
+      var r = b.getBoundingClientRect();
+      b.style.transform = 'translate(' + ((ev.clientX-r.left-r.width/2)*.25).toFixed(1) + 'px,' + ((ev.clientY-r.top-r.height/2)*.35).toFixed(1) + 'px)';
+    });
+    b.addEventListener('pointerleave', function(){ b.style.transform = ''; });
+  });
+
+  // gentle shimmer sweep on the gold headline word, every few seconds
+  var em = document.querySelector('h1 em');
+  if(em){ setInterval(function(){ em.style.animation = 'none'; void em.offsetWidth; em.style.animation = 'shimmer 1.6s ease'; }, 5200); }
+})();
 </script>
 </body>
 </html>
