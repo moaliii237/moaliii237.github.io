@@ -7,150 +7,131 @@
 <meta name="description" content="Mohammadali Jaberi builds AI chatbots, machine learning systems and software that ship. RAG chatbots, LLM integration, computer vision, MLOps." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0e16; --bg-2:#0e1320; --surface:#131a28; --surface-2:#172033;
-    --line:#23304a; --text:#e8ecf4; --muted:#9aa6bd; --faint:#6b7689;
-    --accent:#34d3a6; --accent-2:#7c9cff; --accent-3:#e2b15e;
-    --radius:16px; --maxw:1080px;
-    --grad:linear-gradient(120deg,var(--accent),var(--accent-2));
+    --bg:#0b0a0d; --bg-2:#100e13; --surface:#171419; --surface-2:#1f1b23;
+    --line:#2c2731; --line-2:#3a3340; --text:#f2ece2; --muted:#a79e91; --faint:#6f665b;
+    --gold:#d8b06a; --gold-2:#eccf8e; --rose:#c98f7a;
+    --radius:18px; --maxw:1100px;
+    --grad:linear-gradient(110deg,var(--gold),var(--gold-2));
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--bg); color:var(--text);
-    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;
-  }
+  body{background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  /* subtle film grain for a premium feel */
+  body::before{content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 26px}
   .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
-  .accent{color:var(--accent)}
+  h1,h2,h3,.serif{font-family:var(--serif); font-weight:500; letter-spacing:-.01em}
 
   /* nav */
-  nav{position:fixed; top:0; left:0; right:0; z-index:50;
-    backdrop-filter:blur(12px); background:rgba(10,14,22,.72);
-    border-bottom:1px solid transparent; transition:border-color .3s}
-  nav.scrolled{border-color:var(--line)}
-  .nav-in{max-width:var(--maxw); margin:0 auto; padding:16px 24px;
-    display:flex; align-items:center; justify-content:space-between}
-  .logo{font-weight:800; letter-spacing:-.02em; font-size:1.05rem}
-  .logo span{color:var(--accent)}
-  .nav-links{display:flex; gap:28px; align-items:center}
+  nav{position:fixed; top:0; left:0; right:0; z-index:50; backdrop-filter:blur(14px) saturate(1.3); background:rgba(11,10,13,.6); border-bottom:1px solid transparent; transition:border-color .3s, background .3s}
+  nav.scrolled{border-color:var(--line); background:rgba(11,10,13,.82)}
+  .nav-in{max-width:var(--maxw); margin:0 auto; padding:17px 26px; display:flex; align-items:center; justify-content:space-between}
+  .logo{font-family:var(--serif); font-weight:600; font-size:1.12rem; letter-spacing:0}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex; gap:30px; align-items:center}
   .nav-links a{color:var(--muted); font-size:.92rem; font-weight:500; transition:color .2s}
   .nav-links a:hover{color:var(--text)}
-  .nav-cta{padding:8px 16px; border:1px solid var(--line); border-radius:999px; color:var(--text)!important}
-  .nav-cta:hover{border-color:var(--accent); color:var(--accent)!important}
+  .nav-cta{padding:9px 18px; border:1px solid var(--line-2); border-radius:999px; color:var(--text)!important}
+  .nav-cta:hover{border-color:var(--gold); color:var(--gold)!important}
   @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
 
   /* hero */
-  header{position:relative; padding:170px 0 90px; overflow:hidden}
-  .hero-bg{position:absolute; inset:0; z-index:0;
-    background:
-      radial-gradient(600px 400px at 80% -5%, rgba(124,156,255,.16), transparent 60%),
-      radial-gradient(500px 360px at 10% 10%, rgba(52,211,166,.13), transparent 60%);
-    pointer-events:none}
-  .grid-bg{position:absolute; inset:0; z-index:0; opacity:.4;
-    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:46px 46px;
-    mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%);
-    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%)}
+  header{position:relative; padding:185px 0 95px; overflow:hidden}
+  .hero-bg{position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:radial-gradient(640px 440px at 78% -8%, rgba(216,176,106,.16), transparent 62%), radial-gradient(520px 380px at 8% 8%, rgba(201,143,122,.10), transparent 60%)}
+  .grid-bg{position:absolute; inset:0; z-index:0; opacity:.35;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size:52px 52px;
+    mask-image:radial-gradient(ellipse 72% 62% at 50% 0%,#000 28%,transparent 76%); -webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 0%,#000 28%,transparent 76%)}
   header .wrap{position:relative; z-index:1}
-  .badge{display:inline-flex; align-items:center; gap:8px; padding:7px 14px;
-    border:1px solid var(--line); border-radius:999px; background:var(--surface);
-    font-size:.82rem; color:var(--muted); margin-bottom:26px}
-  .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 rgba(52,211,166,.6); animation:pulse 2.4s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,166,.5)}70%{box-shadow:0 0 0 9px rgba(52,211,166,0)}100%{box-shadow:0 0 0 0 rgba(52,211,166,0)}}
-  h1{font-size:clamp(2.5rem,6.5vw,4.5rem); font-weight:800; letter-spacing:-.035em; line-height:1.04}
-  .hero-role{font-size:clamp(1.15rem,2.6vw,1.6rem); font-weight:600; margin-top:14px;
-    background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; width:fit-content}
-  .hero-lead{max-width:620px; color:var(--muted); font-size:1.08rem; margin-top:22px}
-  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-top:34px}
-  .btn{display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:12px;
-    font-weight:600; font-size:.95rem; transition:transform .15s, box-shadow .2s, background .2s}
+  .badge{display:inline-flex; align-items:center; gap:9px; padding:8px 16px; border:1px solid var(--line-2); border-radius:999px; background:var(--surface); font-size:.82rem; color:var(--muted); margin-bottom:30px}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 0 rgba(216,176,106,.6); animation:pulse 2.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(216,176,106,.5)}70%{box-shadow:0 0 0 10px rgba(216,176,106,0)}100%{box-shadow:0 0 0 0 rgba(216,176,106,0)}}
+  h1{font-size:clamp(2.7rem,7vw,5rem); font-weight:500; line-height:1.02}
+  h1 em{font-style:italic; font-weight:600; background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+  .hero-role{font-family:var(--sans); font-size:clamp(1.05rem,2.4vw,1.4rem); font-weight:500; color:var(--gold-2); margin-top:18px}
+  .hero-lead{max-width:640px; color:var(--muted); font-size:1.12rem; margin-top:24px}
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-top:38px}
+  .btn{display:inline-flex; align-items:center; gap:9px; padding:14px 24px; border-radius:12px; font-family:var(--sans); font-weight:600; font-size:.95rem; transition:transform .15s, box-shadow .25s, border-color .2s, color .2s}
   .btn:hover{transform:translateY(-2px)}
-  .btn-primary{background:var(--grad); color:#04140f; box-shadow:0 8px 30px rgba(52,211,166,.25)}
-  .btn-ghost{border:1px solid var(--line); color:var(--text)}
-  .btn-ghost:hover{border-color:var(--accent)}
+  .btn-primary{background:var(--grad); color:#241a08; box-shadow:0 10px 34px rgba(216,176,106,.22)}
+  .btn-primary:hover{box-shadow:0 14px 40px rgba(216,176,106,.34)}
+  .btn-ghost{border:1px solid var(--line-2); color:var(--text)}
+  .btn-ghost:hover{border-color:var(--gold)}
   .btn svg{width:18px;height:18px}
-
-  /* stats strip */
-  .stats{display:flex; flex-wrap:wrap; gap:14px 40px; margin-top:54px; padding-top:30px; border-top:1px solid var(--line)}
-  .stat b{display:block; font-size:1.5rem; font-weight:800; letter-spacing:-.02em}
+  .stats{display:flex; flex-wrap:wrap; gap:16px 46px; margin-top:60px; padding-top:32px; border-top:1px solid var(--line)}
+  .stat b{display:block; font-family:var(--serif); font-size:1.7rem; font-weight:600; color:var(--gold-2)}
   .stat span{color:var(--faint); font-size:.85rem}
 
-  /* sections */
-  section{padding:84px 0; position:relative}
-  .sec-head{margin-bottom:44px}
-  .kicker{font-size:.8rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--accent)}
-  .sec-head h2{font-size:clamp(1.8rem,4vw,2.5rem); font-weight:800; letter-spacing:-.03em; margin-top:10px}
-  .sec-head p{color:var(--muted); margin-top:10px; max-width:560px}
+  section{padding:90px 0; position:relative}
+  .sec-head{margin-bottom:48px}
+  .kicker{font-family:var(--sans); font-size:.78rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gold)}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,2.9rem); font-weight:500; margin-top:12px}
+  .sec-head p{font-family:var(--sans); color:var(--muted); margin-top:12px; max-width:580px}
 
   /* projects */
-  .projects{display:grid; grid-template-columns:repeat(2,1fr); gap:24px}
-  @media(max-width:780px){.projects{grid-template-columns:1fr}}
-  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-    overflow:hidden; display:flex; flex-direction:column; transition:transform .25s, border-color .25s, box-shadow .25s}
-  .card:hover{transform:translateY(-5px); border-color:#33476e; box-shadow:0 18px 50px rgba(0,0,0,.4)}
+  .projects{display:grid; grid-template-columns:repeat(2,1fr); gap:26px}
+  @media(max-width:800px){.projects{grid-template-columns:1fr}}
+  .card{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; transition:transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s, box-shadow .3s}
+  .card:hover{transform:translateY(-6px); border-color:var(--line-2); box-shadow:0 24px 60px rgba(0,0,0,.5)}
   .card.span2{grid-column:span 2}
-  @media(max-width:780px){.card.span2{grid-column:span 1}}
+  @media(max-width:800px){.card.span2{grid-column:span 1}}
   .card-media{position:relative; background:var(--bg-2); border-bottom:1px solid var(--line); overflow:hidden}
-  .card-media img{width:100%; display:block; object-fit:cover}
-  .card.span2 .card-media img{max-height:340px}
-  .card-noimg{height:130px; display:flex; align-items:center; justify-content:center;
-    background:radial-gradient(120% 140% at 0% 0%, rgba(124,156,255,.18), transparent 55%), radial-gradient(120% 140% at 100% 100%, rgba(52,211,166,.16), transparent 55%); border-bottom:1px solid var(--line)}
-  .card-noimg .mono{color:var(--muted); font-size:.85rem; letter-spacing:.05em}
-  .card-body{padding:22px 22px 24px; display:flex; flex-direction:column; gap:12px; flex:1}
-  .card-top{display:flex; align-items:center; justify-content:space-between; gap:10px}
-  .card-top h3{font-size:1.22rem; font-weight:700; letter-spacing:-.02em}
-  .role{font-size:.72rem; font-weight:600; padding:4px 10px; border-radius:999px; white-space:nowrap;
-    border:1px solid var(--line); color:var(--muted)}
-  .role.solo{color:var(--accent); border-color:rgba(52,211,166,.4)}
-  .role.team{color:var(--accent-2); border-color:rgba(124,156,255,.4)}
-  .card p{color:var(--muted); font-size:.95rem}
-  .result{font-size:.9rem; color:var(--text); background:var(--surface-2); border:1px solid var(--line);
-    border-radius:10px; padding:9px 13px}
-  .result b{color:var(--accent)}
+  .card-media img{width:100%; display:block; object-fit:cover; transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+  .card:hover .card-media img{transform:scale(1.045)}
+  .card.span2 .card-media img{max-height:360px}
+  .card-noimg{height:128px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line);
+    background:radial-gradient(130% 150% at 0% 0%, rgba(216,176,106,.14), transparent 55%), radial-gradient(130% 150% at 100% 100%, rgba(201,143,122,.12), transparent 55%)}
+  .card-noimg .mono{color:var(--gold-2); font-size:.85rem; letter-spacing:.06em; opacity:.85}
+  .card-body{padding:24px 24px 26px; display:flex; flex-direction:column; gap:13px; flex:1}
+  .card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px}
+  .card-top h3{font-size:1.35rem; font-weight:600}
+  .role{font-family:var(--sans); font-size:.72rem; font-weight:600; padding:5px 11px; border-radius:999px; white-space:nowrap; border:1px solid var(--line-2); color:var(--muted)}
+  .role.solo{color:var(--gold); border-color:rgba(216,176,106,.4)}
+  .role.team{color:var(--rose); border-color:rgba(201,143,122,.42)}
+  .card p{font-family:var(--sans); color:var(--muted); font-size:.96rem}
+  .result{font-family:var(--sans); font-size:.9rem; color:var(--text); background:var(--surface-2); border:1px solid var(--line); border-radius:11px; padding:10px 14px}
+  .result b{color:var(--gold-2)}
   .tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:2px}
-  .tag{font-size:.74rem; padding:4px 10px; border-radius:7px; background:var(--surface-2); color:var(--muted); border:1px solid var(--line)}
-  .card-links{display:flex; gap:16px; margin-top:auto; padding-top:6px}
-  .card-links a{font-size:.88rem; font-weight:600; color:var(--text); display:inline-flex; align-items:center; gap:6px}
-  .card-links a:hover{color:var(--accent)}
+  .tag{font-family:var(--sans); font-size:.74rem; padding:5px 11px; border-radius:8px; background:var(--surface-2); color:var(--muted); border:1px solid var(--line)}
+  .card-links{display:flex; gap:18px; margin-top:auto; padding-top:8px}
+  .card-links a{font-family:var(--sans); font-size:.88rem; font-weight:600; color:var(--text); display:inline-flex; align-items:center; gap:6px; transition:color .2s}
+  .card-links a:hover{color:var(--gold)}
   .card-links svg{width:16px;height:16px}
 
-  /* more list */
-  .more{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:24px}
+  .more{display:grid; grid-template-columns:repeat(2,1fr); gap:13px; margin-top:26px}
   @media(max-width:680px){.more{grid-template-columns:1fr}}
-  .more a{display:flex; align-items:center; justify-content:space-between; gap:12px;
-    padding:16px 18px; background:var(--surface); border:1px solid var(--line); border-radius:12px; transition:border-color .2s, transform .15s}
-  .more a:hover{border-color:var(--accent); transform:translateX(3px)}
+  .more a{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:17px 20px; background:var(--surface); border:1px solid var(--line); border-radius:13px; transition:border-color .25s, transform .15s; font-family:var(--sans)}
+  .more a:hover{border-color:var(--gold); transform:translateX(3px)}
   .more .m-t{font-weight:600}
   .more .m-d{color:var(--faint); font-size:.82rem}
   .more .arrow{color:var(--muted)}
 
-  /* skills */
-  .skills{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+  .skills{display:grid; grid-template-columns:repeat(2,1fr); gap:22px}
   @media(max-width:680px){.skills{grid-template-columns:1fr}}
-  .skill-group{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
-  .skill-group h4{font-size:.78rem; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:12px}
+  .skill-group{background:var(--surface); border:1px solid var(--line); border-radius:15px; padding:22px 24px}
+  .skill-group h4{font-family:var(--sans); font-size:.76rem; text-transform:uppercase; letter-spacing:.12em; color:var(--gold); margin-bottom:13px}
   .chips{display:flex; flex-wrap:wrap; gap:8px}
-  .chip{font-size:.85rem; padding:6px 12px; border-radius:8px; background:var(--surface-2); border:1px solid var(--line); color:var(--text)}
+  .chip{font-family:var(--sans); font-size:.85rem; padding:7px 13px; border-radius:9px; background:var(--surface-2); border:1px solid var(--line); color:var(--text)}
 
-  /* about + contact */
-  .about p{color:var(--muted); max-width:680px; font-size:1.05rem; margin-bottom:16px}
+  .about p{font-family:var(--sans); color:var(--muted); max-width:700px; font-size:1.08rem; margin-bottom:18px}
   .about strong{color:var(--text); font-weight:600}
-  .contact-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:40px; text-align:center}
-  .contact-card h2{font-size:clamp(1.6rem,3.6vw,2.3rem); font-weight:800; letter-spacing:-.03em}
-  .contact-card p{color:var(--muted); margin:12px auto 28px; max-width:480px}
-  .contact-row{display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
-  footer{border-top:1px solid var(--line); padding:34px 0; color:var(--faint); font-size:.85rem;
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px}
+  .contact-card{position:relative; background:linear-gradient(160deg,var(--surface),var(--bg-2)); border:1px solid var(--line-2); border-radius:var(--radius); padding:54px 40px; text-align:center; overflow:hidden}
+  .contact-card::after{content:""; position:absolute; inset:0; background:radial-gradient(500px 300px at 50% -20%, rgba(216,176,106,.16), transparent 60%); pointer-events:none}
+  .contact-card h2{font-size:clamp(1.9rem,4vw,2.7rem); font-weight:500; position:relative}
+  .contact-card p{font-family:var(--sans); color:var(--muted); margin:14px auto 30px; max-width:500px; position:relative}
+  .contact-row{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; position:relative}
+  footer{border-top:1px solid var(--line); padding:36px 0; color:var(--faint); font-size:.85rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--sans)}
 
-  /* reveal */
-  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)}
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1; transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.dot{animation:none}html{scroll-behavior:auto}}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.dot{animation:none}html{scroll-behavior:auto}.card:hover .card-media img{transform:none}}
 </style>
 </head>
 <body>
@@ -172,7 +153,7 @@
   <div class="grid-bg"></div>
   <div class="wrap">
     <div class="badge reveal"><span class="dot"></span> Open to junior data and ML roles, and freelance work</div>
-    <h1 class="reveal">I build AI that<br>actually ships.</h1>
+    <h1 class="reveal">I build AI that<br>actually <em>ships</em>.</h1>
     <div class="hero-role reveal">AI Developer and Data Scientist</div>
     <p class="hero-lead reveal">I turn ideas into working systems: RAG chatbots grounded in your data, machine learning models, speech-to-text pipelines, and full software products. I care about getting things all the way to something people use, not just a notebook that runs once.</p>
     <div class="hero-cta reveal">
@@ -185,7 +166,7 @@
     </div>
     <div class="stats reveal">
       <div class="stat"><b>12</b><span>public projects on GitHub</span></div>
-      <div class="stat"><b>1</b><span>commercial product shipped</span></div>
+      <div class="stat"><b>2</b><span>products shipped to real users</span></div>
       <div class="stat"><b>End to end</b><span>data, model, deployment</span></div>
     </div>
   </div>
@@ -196,7 +177,7 @@
     <div class="sec-head reveal">
       <div class="kicker">Selected work</div>
       <h2>Projects I have built</h2>
-      <p>A mix of solo work and team projects. Every one links to its code on GitHub, and for the team ones I say exactly what I built.</p>
+      <p>A mix of solo work and team projects. Every one links to its code or a live site, and for the team ones I say exactly what I built.</p>
     </div>
 
     <div class="projects">
@@ -234,13 +215,24 @@
         </div>
       </article>
 
-      <article class="card span2 reveal">
+      <article class="card reveal">
+        <div class="card-media"><img src="assets/bloomaflowers.png" alt="Blooma Floral Atelier website" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-top"><h3>Blooma Floral Atelier</h3><span class="role solo">Solo, freelance</span></div>
+          <p>A live website I designed and deployed for a flower studio: an elegant, responsive site with a hero, gallery, and enquiry flow, in both English and Dutch. It is online and serving real visitors at bloomaflowers.nl.</p>
+          <div class="result">A <b>real client site, live in production</b>, bilingual (English and Dutch).</div>
+          <div class="tags"><span class="tag">Web</span><span class="tag">Responsive design</span><span class="tag">Bilingual</span><span class="tag">Deployed</span></div>
+          <div class="card-links"><a href="https://bloomaflowers.nl" target="_blank" rel="noopener">Visit live site &#8599;</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
         <div class="card-media"><img src="assets/research.png" alt="Plant root segmentation output comparison" loading="lazy"></div>
         <div class="card-body">
-          <div class="card-top"><h3>Plant root segmentation research</h3><span class="role solo">Solo</span></div>
+          <div class="card-top"><h3>Root segmentation research</h3><span class="role solo">Solo</span></div>
           <p>A controlled study of how the way you cut an image into patches changes both segmentation quality and the actual measurement of root length. I trained a ResUNet across ten configurations and tested the results with proper statistics.</p>
           <div class="result">Larger patches cut measurement error from <b>24% to 14%</b>, and the best Dice score was not the most accurate at measuring length.</div>
-          <div class="tags"><span class="tag">PyTorch</span><span class="tag">ResUNet</span><span class="tag">scikit-image</span><span class="tag">SciPy</span><span class="tag">Wilcoxon test</span></div>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">ResUNet</span><span class="tag">scikit-image</span><span class="tag">SciPy</span></div>
           <div class="card-links"><a href="https://github.com/moaliii237/root-segmentation-research" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
         </div>
       </article>
@@ -255,21 +247,10 @@
         </div>
       </article>
 
-      <article class="card reveal">
-        <div class="card-noimg"><span class="mono">[ ] Skin type classifier</span></div>
-        <div class="card-body">
-          <div class="card-top"><h3>Skin type image classifier</h3><span class="role solo">Solo</span></div>
-          <p>A 4-class skin-type classifier where I collected and cleaned my own image dataset, then compared an MLP, a custom CNN, and VGG16 and VGG19 transfer learning, and analysed where it failed.</p>
-          <div class="result">Reached about <b>65%</b> on a genuinely hard 4-class problem, with honest error analysis.</div>
-          <div class="tags"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Transfer learning</span><span class="tag">OpenCV</span></div>
-          <div class="card-links"><a href="https://github.com/moaliii237/skin-type-classifier" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
-        </div>
-      </article>
-
     </div>
 
     <div class="more reveal">
-      <a href="https://moaliii237.github.io/sofia-salon-demo" target="_blank" rel="noopener"><span><span class="m-t">Sofia Salon website</span><br><span class="m-d">Live React booking site I built freelance</span></span><span class="arrow">live &#8599;</span></a>
+      <a href="https://github.com/moaliii237/skin-type-classifier" target="_blank" rel="noopener"><span><span class="m-t">Skin type image classifier</span><br><span class="m-d">CNN and VGG transfer learning, honest error analysis</span></span><span class="arrow">&#8594;</span></a>
       <a href="https://github.com/moaliii237/persian-nlp-pipeline" target="_blank" rel="noopener"><span><span class="m-t">Persian NLP pipeline</span><br><span class="m-d">Speech to emotion, my part: speech-to-text and ParsBERT</span></span><span class="arrow">&#8594;</span></a>
       <a href="https://github.com/moaliii237/stock-forecasting" target="_blank" rel="noopener"><span><span class="m-t">Stock forecasting</span><br><span class="m-d">ARIMA, ML and LSTM on NASDAQ-100</span></span><span class="arrow">&#8594;</span></a>
       <a href="https://github.com/moaliii237/logistic-regression-numpy" target="_blank" rel="noopener"><span><span class="m-t">Logistic regression from scratch</span><br><span class="m-d">Built in NumPy, checked against scikit-learn</span></span><span class="arrow">&#8594;</span></a>
@@ -330,7 +311,7 @@
   const nav=document.getElementById('nav');
   addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10));
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*60)+'ms';io.observe(el)});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*55)+'ms';io.observe(el)});
 </script>
 </body>
 </html>
