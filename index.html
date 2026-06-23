@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohammadali Jaberi - AI Developer and Data Scientist</title>
+<meta name="description" content="Mohammadali Jaberi builds AI chatbots, machine learning systems and software that ship. RAG chatbots, LLM integration, computer vision, MLOps." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e16; --bg-2:#0e1320; --surface:#131a28; --surface-2:#172033;
+    --line:#23304a; --text:#e8ecf4; --muted:#9aa6bd; --faint:#6b7689;
+    --accent:#34d3a6; --accent-2:#7c9cff; --accent-3:#e2b15e;
+    --radius:16px; --maxw:1080px;
+    --grad:linear-gradient(120deg,var(--accent),var(--accent-2));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+  .accent{color:var(--accent)}
+
+  /* nav */
+  nav{position:fixed; top:0; left:0; right:0; z-index:50;
+    backdrop-filter:blur(12px); background:rgba(10,14,22,.72);
+    border-bottom:1px solid transparent; transition:border-color .3s}
+  nav.scrolled{border-color:var(--line)}
+  .nav-in{max-width:var(--maxw); margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between}
+  .logo{font-weight:800; letter-spacing:-.02em; font-size:1.05rem}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex; gap:28px; align-items:center}
+  .nav-links a{color:var(--muted); font-size:.92rem; font-weight:500; transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{padding:8px 16px; border:1px solid var(--line); border-radius:999px; color:var(--text)!important}
+  .nav-cta:hover{border-color:var(--accent); color:var(--accent)!important}
+  @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* hero */
+  header{position:relative; padding:170px 0 90px; overflow:hidden}
+  .hero-bg{position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(600px 400px at 80% -5%, rgba(124,156,255,.16), transparent 60%),
+      radial-gradient(500px 360px at 10% 10%, rgba(52,211,166,.13), transparent 60%);
+    pointer-events:none}
+  .grid-bg{position:absolute; inset:0; z-index:0; opacity:.4;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%)}
+  header .wrap{position:relative; z-index:1}
+  .badge{display:inline-flex; align-items:center; gap:8px; padding:7px 14px;
+    border:1px solid var(--line); border-radius:999px; background:var(--surface);
+    font-size:.82rem; color:var(--muted); margin-bottom:26px}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 rgba(52,211,166,.6); animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,166,.5)}70%{box-shadow:0 0 0 9px rgba(52,211,166,0)}100%{box-shadow:0 0 0 0 rgba(52,211,166,0)}}
+  h1{font-size:clamp(2.5rem,6.5vw,4.5rem); font-weight:800; letter-spacing:-.035em; line-height:1.04}
+  .hero-role{font-size:clamp(1.15rem,2.6vw,1.6rem); font-weight:600; margin-top:14px;
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; width:fit-content}
+  .hero-lead{max-width:620px; color:var(--muted); font-size:1.08rem; margin-top:22px}
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-top:34px}
+  .btn{display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:12px;
+    font-weight:600; font-size:.95rem; transition:transform .15s, box-shadow .2s, background .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--grad); color:#04140f; box-shadow:0 8px 30px rgba(52,211,166,.25)}
+  .btn-ghost{border:1px solid var(--line); color:var(--text)}
+  .btn-ghost:hover{border-color:var(--accent)}
+  .btn svg{width:18px;height:18px}
+
+  /* stats strip */
+  .stats{display:flex; flex-wrap:wrap; gap:14px 40px; margin-top:54px; padding-top:30px; border-top:1px solid var(--line)}
+  .stat b{display:block; font-size:1.5rem; font-weight:800; letter-spacing:-.02em}
+  .stat span{color:var(--faint); font-size:.85rem}
+
+  /* sections */
+  section{padding:84px 0; position:relative}
+  .sec-head{margin-bottom:44px}
+  .kicker{font-size:.8rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--accent)}
+  .sec-head h2{font-size:clamp(1.8rem,4vw,2.5rem); font-weight:800; letter-spacing:-.03em; margin-top:10px}
+  .sec-head p{color:var(--muted); margin-top:10px; max-width:560px}
+
+  /* projects */
+  .projects{display:grid; grid-template-columns:repeat(2,1fr); gap:24px}
+  @media(max-width:780px){.projects{grid-template-columns:1fr}}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; display:flex; flex-direction:column; transition:transform .25s, border-color .25s, box-shadow .25s}
+  .card:hover{transform:translateY(-5px); border-color:#33476e; box-shadow:0 18px 50px rgba(0,0,0,.4)}
+  .card.span2{grid-column:span 2}
+  @media(max-width:780px){.card.span2{grid-column:span 1}}
+  .card-media{position:relative; background:var(--bg-2); border-bottom:1px solid var(--line); overflow:hidden}
+  .card-media img{width:100%; display:block; object-fit:cover}
+  .card.span2 .card-media img{max-height:340px}
+  .card-noimg{height:130px; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(120% 140% at 0% 0%, rgba(124,156,255,.18), transparent 55%), radial-gradient(120% 140% at 100% 100%, rgba(52,211,166,.16), transparent 55%); border-bottom:1px solid var(--line)}
+  .card-noimg .mono{color:var(--muted); font-size:.85rem; letter-spacing:.05em}
+  .card-body{padding:22px 22px 24px; display:flex; flex-direction:column; gap:12px; flex:1}
+  .card-top{display:flex; align-items:center; justify-content:space-between; gap:10px}
+  .card-top h3{font-size:1.22rem; font-weight:700; letter-spacing:-.02em}
+  .role{font-size:.72rem; font-weight:600; padding:4px 10px; border-radius:999px; white-space:nowrap;
+    border:1px solid var(--line); color:var(--muted)}
+  .role.solo{color:var(--accent); border-color:rgba(52,211,166,.4)}
+  .role.team{color:var(--accent-2); border-color:rgba(124,156,255,.4)}
+  .card p{color:var(--muted); font-size:.95rem}
+  .result{font-size:.9rem; color:var(--text); background:var(--surface-2); border:1px solid var(--line);
+    border-radius:10px; padding:9px 13px}
+  .result b{color:var(--accent)}
+  .tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:2px}
+  .tag{font-size:.74rem; padding:4px 10px; border-radius:7px; background:var(--surface-2); color:var(--muted); border:1px solid var(--line)}
+  .card-links{display:flex; gap:16px; margin-top:auto; padding-top:6px}
+  .card-links a{font-size:.88rem; font-weight:600; color:var(--text); display:inline-flex; align-items:center; gap:6px}
+  .card-links a:hover{color:var(--accent)}
+  .card-links svg{width:16px;height:16px}
+
+  /* more list */
+  .more{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:24px}
+  @media(max-width:680px){.more{grid-template-columns:1fr}}
+  .more a{display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:16px 18px; background:var(--surface); border:1px solid var(--line); border-radius:12px; transition:border-color .2s, transform .15s}
+  .more a:hover{border-color:var(--accent); transform:translateX(3px)}
+  .more .m-t{font-weight:600}
+  .more .m-d{color:var(--faint); font-size:.82rem}
+  .more .arrow{color:var(--muted)}
+
+  /* skills */
+  .skills{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+  @media(max-width:680px){.skills{grid-template-columns:1fr}}
+  .skill-group{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+  .skill-group h4{font-size:.78rem; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:12px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px}
+  .chip{font-size:.85rem; padding:6px 12px; border-radius:8px; background:var(--surface-2); border:1px solid var(--line); color:var(--text)}
+
+  /* about + contact */
+  .about p{color:var(--muted); max-width:680px; font-size:1.05rem; margin-bottom:16px}
+  .about strong{color:var(--text); font-weight:600}
+  .contact-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:40px; text-align:center}
+  .contact-card h2{font-size:clamp(1.6rem,3.6vw,2.3rem); font-weight:800; letter-spacing:-.03em}
+  .contact-card p{color:var(--muted); margin:12px auto 28px; max-width:480px}
+  .contact-row{display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
+  footer{border-top:1px solid var(--line); padding:34px 0; color:var(--faint); font-size:.85rem;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px}
+
+  /* reveal */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1; transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.dot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#top" class="logo">Mohammadali <span>Jaberi</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="hero-bg"></div>
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <div class="badge reveal"><span class="dot"></span> Open to junior data and ML roles, and freelance work</div>
+    <h1 class="reveal">I build AI that<br>actually ships.</h1>
+    <div class="hero-role reveal">AI Developer and Data Scientist</div>
+    <p class="hero-lead reveal">I turn ideas into working systems: RAG chatbots grounded in your data, machine learning models, speech-to-text pipelines, and full software products. I care about getting things all the way to something people use, not just a notebook that runs once.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary" href="#work">View my work</a>
+      <a class="btn btn-ghost" href="https://github.com/moaliii237" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-ghost" href="mailto:m.jaberi14979@gmail.com">Email me</a>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b>12</b><span>public projects on GitHub</span></div>
+      <div class="stat"><b>1</b><span>commercial product shipped</span></div>
+      <div class="stat"><b>End to end</b><span>data, model, deployment</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Selected work</div>
+      <h2>Projects I have built</h2>
+      <p>A mix of solo work and team projects. Every one links to its code on GitHub, and for the team ones I say exactly what I built.</p>
+    </div>
+
+    <div class="projects">
+
+      <article class="card span2 reveal">
+        <div class="card-media"><img src="assets/euphoria-dashboard.png" alt="Euphoria CRM and POS dashboard" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-top"><h3>Euphoria: CRM and POS desktop app</h3><span class="role solo">Solo, my product</span></div>
+          <p>An offline CRM and point-of-sale desktop app I built and sell to retail shops. It runs on an embedded database and is packaged so a shop installs one file with no setup. It has its own offline license system, automatic backups, and an optional local-network mode so several computers share one live database.</p>
+          <div class="result">A real product that businesses pay for, with an <b>offline Ed25519 license system</b> and automatic database backups.</div>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Drizzle ORM</span><span class="tag">PostgreSQL</span><span class="tag">Electron</span><span class="tag">TypeScript</span></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/euphoria-pos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-media"><img src="assets/robotics-pid.gif" alt="Simulated OT-2 robot driven to plant root tips" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-top"><h3>Computer vision to robotics</h3><span class="role solo">Solo</span></div>
+          <p>A U-Net finds plant roots in petri-dish photos, then the root tips are mapped into robot coordinates and a simulated lab robot is driven to each one, using both a tuned PID controller and a reinforcement-learning agent.</p>
+          <div class="result">U-Net F1 <b>0.88</b>, both controllers reach <b>under 1 mm</b> in simulation.</div>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">U-Net</span><span class="tag">PyBullet</span><span class="tag">PPO</span><span class="tag">Optuna</span><span class="tag">OpenCV</span></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/ot2-robotics-vision" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-media"><img src="assets/emotionscope.png" alt="EmotionScope emotion analysis interface" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-top"><h3>EmotionScope: MLOps system</h3><span class="role team">Team of 7</span></div>
+          <p>A production system that detects emotion in TV transcripts, from speech-to-text through a fine-tuned model, served by an API and deployed with Docker and Azure. My part was the continuous-retraining feedback loop and the command-line tool.</p>
+          <div class="result">My loop <b>retrains on user corrections</b> and promotes a new model only when it scores higher than the live one.</div>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">DeBERTa</span><span class="tag">Whisper</span><span class="tag">Docker</span><span class="tag">Azure ML</span><span class="tag">Airflow</span></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/emotion-analysis-mlops" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+        </div>
+      </article>
+
+      <article class="card span2 reveal">
+        <div class="card-media"><img src="assets/research.png" alt="Plant root segmentation output comparison" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-top"><h3>Plant root segmentation research</h3><span class="role solo">Solo</span></div>
+          <p>A controlled study of how the way you cut an image into patches changes both segmentation quality and the actual measurement of root length. I trained a ResUNet across ten configurations and tested the results with proper statistics.</p>
+          <div class="result">Larger patches cut measurement error from <b>24% to 14%</b>, and the best Dice score was not the most accurate at measuring length.</div>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">ResUNet</span><span class="tag">scikit-image</span><span class="tag">SciPy</span><span class="tag">Wilcoxon test</span></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/root-segmentation-research" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-noimg"><span class="mono">{ } WhatsApp RAG bot</span></div>
+        <div class="card-body">
+          <div class="card-top"><h3>WhatsApp RAG chatbot</h3><span class="role team">Team of 2</span></div>
+          <p>A WhatsApp customer-service bot for a Dutch food cooperative. It answers product and pickup questions in Dutch and English, grounded only in the business's own data, with star reviews and order reminders. I wrote the chatbot code.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">RAG</span><span class="tag">WhatsApp API</span></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/whatsapp-rag-chatbot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-noimg"><span class="mono">[ ] Skin type classifier</span></div>
+        <div class="card-body">
+          <div class="card-top"><h3>Skin type image classifier</h3><span class="role solo">Solo</span></div>
+          <p>A 4-class skin-type classifier where I collected and cleaned my own image dataset, then compared an MLP, a custom CNN, and VGG16 and VGG19 transfer learning, and analysed where it failed.</p>
+          <div class="result">Reached about <b>65%</b> on a genuinely hard 4-class problem, with honest error analysis.</div>
+          <div class="tags"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Transfer learning</span><span class="tag">OpenCV</span></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/skin-type-classifier" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg> View code</a></div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="more reveal">
+      <a href="https://moaliii237.github.io/sofia-salon-demo" target="_blank" rel="noopener"><span><span class="m-t">Sofia Salon website</span><br><span class="m-d">Live React booking site I built freelance</span></span><span class="arrow">live &#8599;</span></a>
+      <a href="https://github.com/moaliii237/persian-nlp-pipeline" target="_blank" rel="noopener"><span><span class="m-t">Persian NLP pipeline</span><br><span class="m-d">Speech to emotion, my part: speech-to-text and ParsBERT</span></span><span class="arrow">&#8594;</span></a>
+      <a href="https://github.com/moaliii237/stock-forecasting" target="_blank" rel="noopener"><span><span class="m-t">Stock forecasting</span><br><span class="m-d">ARIMA, ML and LSTM on NASDAQ-100</span></span><span class="arrow">&#8594;</span></a>
+      <a href="https://github.com/moaliii237/logistic-regression-numpy" target="_blank" rel="noopener"><span><span class="m-t">Logistic regression from scratch</span><br><span class="m-d">Built in NumPy, checked against scikit-learn</span></span><span class="arrow">&#8594;</span></a>
+      <a href="https://github.com/moaliii237/stock-anomaly-detection" target="_blank" rel="noopener"><span><span class="m-t">Stock anomaly detection</span><br><span class="m-d">Team project, two-stage LSTM, my part: data and docs</span></span><span class="arrow">&#8594;</span></a>
+      <a href="https://github.com/moaliii237" target="_blank" rel="noopener"><span><span class="m-t">All repositories</span><br><span class="m-d">Everything on my GitHub</span></span><span class="arrow">&#8599;</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Toolkit</div>
+      <h2>What I work with</h2>
+    </div>
+    <div class="skills">
+      <div class="skill-group reveal"><h4>Languages</h4><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">TypeScript</span></div></div>
+      <div class="skill-group reveal"><h4>Machine learning and DL</h4><div class="chips"><span class="chip">scikit-learn</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">XGBoost</span><span class="chip">CNNs</span><span class="chip">Transfer learning</span></div></div>
+      <div class="skill-group reveal"><h4>NLP and LLMs</h4><div class="chips"><span class="chip">Hugging Face</span><span class="chip">RAG</span><span class="chip">LangChain</span><span class="chip">Whisper</span><span class="chip">Prompt engineering</span></div></div>
+      <div class="skill-group reveal"><h4>MLOps and cloud</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Azure ML</span><span class="chip">Airflow</span><span class="chip">MLflow</span><span class="chip">CI/CD</span></div></div>
+      <div class="skill-group reveal"><h4>Data and statistics</h4><div class="chips"><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Hypothesis testing</span><span class="chip">A/B testing</span><span class="chip">Power BI</span></div></div>
+      <div class="skill-group reveal"><h4>Web and product</h4><div class="chips"><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Electron</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">About</div>
+      <h2>A bit about me</h2>
+    </div>
+    <p class="reveal">I am <strong>Mohammadali Jaberi</strong>, an Applied Data Science and Artificial Intelligence student at Breda University in the Netherlands. I like building things that run in the real world, from machine learning pipelines to a full desktop app that a real shop uses every day.</p>
+    <p class="reveal">Most of my work sits in two areas: applied machine learning (NLP, large language models, computer vision, time series) and full-stack product development. I care about taking a project all the way to something people can actually use, and about being honest about what does and does not work.</p>
+    <p class="reveal">I speak English and Persian and I am learning Dutch. I am open to junior data science and machine learning roles, and to freelance work.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <h2>Let's work together</h2>
+      <p>If you have a problem you want solved with AI, data or software, tell me about it and I will reply with a short, concrete plan.</p>
+      <div class="contact-row">
+        <a class="btn btn-primary" href="mailto:m.jaberi14979@gmail.com">m.jaberi14979@gmail.com</a>
+        <a class="btn btn-ghost" href="https://github.com/moaliii237" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Mohammadali Jaberi - Netherlands</span>
+  <span>Built and designed by me</span>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10));
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*60)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
