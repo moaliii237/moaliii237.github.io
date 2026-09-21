@@ -6,7 +6,11 @@
 <title>Mohammadali Jaberi - Data Science and AI Student</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0a0d'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-weight='600' font-size='19' fill='%23d8b06a' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 
-<meta name="description" content="Mohammadali Jaberi, Applied Data Science and AI student at Breda University, looking for a data science or AI internship from February 2027. Computer vision, NLP and speech, RAG chatbots, MLOps." />
+<meta name="description" content="Mohammadali Jaberi, third-year Applied Data Science and AI student at Breda University of Applied Sciences (BUas), looking for a full-time data science or AI internship from February 2027. Computer vision, speech-to-text, NLP and machine learning." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://moaliii237.github.io" />
+<meta property="og:title" content="Mohammadali Jaberi, Data Science and AI student (internship from February 2027)" />
+<meta property="og:description" content="Third-year Applied Data Science and AI student at BUas, looking for a full-time data science or AI internship of about 5 months from February 2027." />
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,6 +128,20 @@
   .card-links a{font-family:var(--sans); font-size:.88rem; font-weight:600; color:var(--text); display:inline-flex; align-items:center; gap:6px; transition:color .2s}
   .card-links a:hover{color:var(--gold)}
   .card-links svg{width:16px;height:16px}
+  .card-note{font-family:var(--sans); font-size:.85rem; color:var(--faint)}
+
+  /* before/after bar chart in the roadside card (bar width = score x 100%) */
+  .chart{padding:26px 28px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:22px 30px; background:radial-gradient(130% 150% at 0% 0%, rgba(216,176,106,.10), transparent 55%), var(--bg-2)}
+  @media(max-width:800px){.chart{grid-template-columns:1fr; padding:22px 20px 18px}}
+  .chart-group h4{font-family:var(--sans); font-size:.82rem; font-weight:600; color:var(--text); margin-bottom:8px}
+  .chart-group h4 span{color:var(--faint); font-weight:500}
+  .chart-row{display:grid; grid-template-columns:3.4em 1fr 3em; align-items:center; gap:10px; margin-top:8px; font-family:var(--sans); font-size:.78rem; color:var(--faint)}
+  .chart-row b, .chart-row .v{text-align:right}
+  .chart-row b{color:var(--gold-2); font-weight:600}
+  .chart-track{height:10px; background:var(--surface-2); border-radius:5px; overflow:hidden}
+  .chart-bar{display:block; height:100%; border-radius:5px; background:var(--line-2)}
+  .chart-bar.after{background:var(--grad)}
+  .chart-cap{grid-column:1/-1; font-family:var(--sans); font-size:.78rem; color:var(--faint)}
 
   .more{display:grid; grid-template-columns:repeat(2,1fr); gap:13px; margin-top:26px}
   @media(max-width:680px){.more{grid-template-columns:1fr}}
@@ -144,12 +162,17 @@
 
   .about p{font-family:var(--sans); color:var(--muted); max-width:700px; font-size:1.08rem; margin-bottom:18px}
   .about strong{color:var(--text); font-weight:600}
+  .about a{color:var(--gold-2)}
+  .about a:hover{color:var(--gold)}
   .contact-card{position:relative; background:linear-gradient(160deg,var(--surface),var(--bg-2)); border:1px solid var(--line-2); border-radius:var(--radius); padding:54px 40px; text-align:center; overflow:hidden}
   .contact-card::after{content:""; position:absolute; inset:0; background:radial-gradient(500px 300px at 50% -20%, rgba(216,176,106,.16), transparent 60%); pointer-events:none}
   .contact-card h2{font-size:clamp(1.9rem,4vw,2.7rem); font-weight:500; position:relative}
   .contact-card p{font-family:var(--sans); color:var(--muted); margin:14px auto 30px; max-width:500px; position:relative}
   .contact-row{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; position:relative}
+  .contact-card .contact-note{font-size:.88rem; color:var(--faint); margin:26px auto 0}
   footer{border-top:1px solid var(--line); padding:36px 0; color:var(--faint); font-size:.85rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--sans)}
+  footer a{color:var(--muted); transition:color .2s}
+  footer a:hover{color:var(--gold)}
 
   .js .reveal{opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1; transform:none}
@@ -173,6 +196,7 @@
       <a href="#work">Work</a>
       <a href="#skills">Skills</a>
       <a href="#about">About</a>
+      <a href="Mohammadali_Jaberi_CV.pdf" target="_blank" rel="noopener">CV</a>
       <a href="#contact" class="nav-cta">Get in touch</a>
     </div>
   </div>
@@ -182,19 +206,20 @@
   <div class="hero-bg"><i class="a1"></i><i class="a2"></i></div>
   <div class="grid-bg"></div>
   <div class="wrap">
-    <div class="badge hero-anim"><span class="dot"></span> Looking for a data science or AI internship from February 2027</div>
+    <div class="badge hero-anim"><span class="dot"></span> Looking for a full-time data science or AI internship from February 2027</div>
     <h1><span class="line"><span>I build AI that</span></span><span class="line"><span>actually <em>ships</em>.</span></span></h1>
-    <div class="hero-role hero-anim">Data Science and AI Student, Freelance ML Developer</div>
-    <p class="hero-lead hero-anim">I am a third-year Applied Data Science and AI student at Breda University, looking for a full-time internship of about 5 months from February 2027. Next to my studies I build working systems for real clients: computer vision and speech-to-text pipelines, RAG chatbots and full software products, taken all the way to something people use, not just a notebook that runs once.</p>
+    <div class="hero-role hero-anim">Third-year Applied Data Science and AI student at BUas</div>
+    <p class="hero-lead hero-anim">I study at Breda University of Applied Sciences (BUas) and I am looking for a full-time internship of about 5 months from February 2027, in data science, machine learning or AI. Next to my studies I have built a computer vision pilot for a geodata company and a speech-to-text pipeline for a call center (both freelance), a CRM and point-of-sale app that my family's shop uses every day, and a live website for a flower studio. I like taking a project all the way to something people use, not just a notebook that runs once.</p>
     <div class="hero-cta hero-anim">
       <a class="btn btn-primary magnetic" href="#work">View my work</a>
+      <a class="btn btn-ghost magnetic" href="Mohammadali_Jaberi_CV.pdf" target="_blank" rel="noopener">Download my CV</a>
       <a class="btn btn-ghost magnetic" href="https://github.com/moaliii237" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> GitHub</a>
       <a class="btn btn-ghost magnetic" href="mailto:moaliii237@gmail.com">Email me</a>
     </div>
     <div class="stats hero-anim">
-      <div class="stat"><b data-count="15">0</b><span>public projects on GitHub</span></div>
-      <div class="stat"><b data-count="4">0</b><span>shipped for real users and clients</span></div>
-      <div class="stat"><b>End to end</b><span>data, model, deployment</span></div>
+      <div class="stat"><b>Feb 2027</b><span>internship start, full-time, about 5 months</span></div>
+      <div class="stat"><b data-count="4">4</b><span>projects built for real clients and users</span></div>
+      <div class="stat"><b data-count="16">16</b><span>public projects on GitHub</span></div>
     </div>
   </div>
 </header>
@@ -204,44 +229,49 @@
     <div class="sec-head reveal">
       <div class="kicker">Selected work</div>
       <h2>Projects I have built</h2>
-      <p>A mix of solo work and team projects. Every one links to its code or a live site, and for the team ones I say exactly what I built.</p>
+      <p>A mix of freelance, solo and team projects. Most link to their code, a case study or a live site, and for the team ones I say exactly what I built.</p>
     </div>
 
     <div class="projects">
 
       <article class="card span2 reveal">
-        <div class="card-media"><img src="assets/euphoria-dashboard.png" alt="Euphoria CRM and POS dashboard" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-top"><h3>Euphoria: CRM and POS desktop app</h3><span class="role solo">Solo, my product</span></div>
-          <p>An offline CRM and point-of-sale desktop app I built for my family's tile and ceramics business, and it now runs the commercial side day to day. It uses an embedded database and is packaged so a shop installs one file with no setup. It has its own offline license system, automatic backups, and an optional local-network mode so several computers share one live database.</p>
-          <div class="result">A real product in daily use at a working shop, with an <b>offline Ed25519 license system</b> and automatic database backups.</div>
-          <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Drizzle ORM</span><span class="tag">PostgreSQL</span><span class="tag">Electron</span><span class="tag">TypeScript</span></div>
-          <div class="card-links"><a href="https://github.com/moaliii237/euphoria-pos" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-noimg"><span class="mono">{ } Roadside detection + mapping</span></div>
-        <div class="card-body">
-          <div class="card-top"><h3>Roadside CV pilot: obstacles and vegetation</h3><span class="role solo">Solo, freelance</span></div>
-          <p>A paid computer vision pilot for a Dutch geodata company. From survey-van camera frames I detect the fixed obstacles that matter for roadside mowing and map the vegetation structure along the verge, then export both as GeoJSON layers, with an interpolated GPS position for every frame. All three milestones delivered and accepted.</p>
-          <div class="result">Obstacle detection lifted from 0.113 to <b>0.464 AP50</b> and vegetation from 0.438 to <b>0.818 mIoU</b>, measured on held-out streets.</div>
-          <div class="tags"><span class="tag">PyTorch</span><span class="tag">RF-DETR</span><span class="tag">DINOv2</span><span class="tag">OpenCV</span><span class="tag">GeoJSON</span><span class="tag">ROS2</span></div>
-          <div class="card-links"><a href="https://github.com/moaliii237/roadside-cv-pilot" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> Case study</a></div>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-noimg"><span class="mono">{ } Dutch ASR + compliance</span></div>
-        <div class="card-body">
-          <div class="card-top"><h3>Sagitta: speech-to-text and compliance</h3><span class="role solo">Solo, freelance</span></div>
-          <p>A Dutch speech-to-text and compliance pipeline I built freelance for an energy-sales call center. It transcribes calls, cleans the text, and checks them against compliance rules. I trained and evaluated the speech models and added language-model rescoring to push accuracy higher.</p>
-          <div class="result">Reached <b>88% F1 on compliance keywords</b> and a 34.6% word error rate, with no invented text.</div>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Whisper</span><span class="tag">Wav2Vec2</span><span class="tag">KenLM</span><span class="tag">PyTorch</span></div>
-          <div class="card-links">
-            <a href="https://github.com/moaliii237/dutch-asr-sagitta" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> Pipeline</a>
-            <a href="https://github.com/moaliii237/Sagitta-" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> Model training</a>
+        <div class="card-media chart">
+          <div class="chart-group">
+            <h4>Obstacle detection <span>AP50, same classes</span></h4>
+            <div class="chart-row"><span>Before</span><span class="chart-track"><span class="chart-bar" style="width:11.3%"></span></span><span class="v">0.113</span></div>
+            <div class="chart-row"><span>After</span><span class="chart-track"><span class="chart-bar after" style="width:36.1%"></span></span><b>0.361</b></div>
           </div>
+          <div class="chart-group">
+            <h4>Tree trunks <span>AP50</span></h4>
+            <div class="chart-row"><span>Before</span><span class="chart-track"><span class="chart-bar" style="width:12.5%"></span></span><span class="v">0.125</span></div>
+            <div class="chart-row"><span>After</span><span class="chart-track"><span class="chart-bar after" style="width:82.1%"></span></span><b>0.821</b></div>
+          </div>
+          <div class="chart-group">
+            <h4>Vegetation segmentation <span>mIoU</span></h4>
+            <div class="chart-row"><span>Before</span><span class="chart-track"><span class="chart-bar" style="width:43.8%"></span></span><span class="v">0.438</span></div>
+            <div class="chart-row"><span>After</span><span class="chart-track"><span class="chart-bar after" style="width:81.8%"></span></span><b>0.818</b></div>
+          </div>
+          <div class="chart-cap">Before: the client's existing models. After: the models I trained. All scored on test streets held out by GPS location.</div>
+        </div>
+        <div class="card-body">
+          <div class="card-top"><h3>Roadside computer vision pilot</h3><span class="role solo">Solo, freelance</span></div>
+          <p>A paid pilot for a Dutch geodata company. From survey-van camera frames I detect fixed roadside obstacles and map the verge vegetation, then export both as GeoJSON layers for the client's online map, with a GPS position interpolated for every frame (this removed up to 87 m of map error). I wrote the annotation guidelines, labelled the data myself, and split train and test by GPS location, so the test streets were never seen in training. All three milestones were accepted.</p>
+          <p>When two checks of the model disagreed, I reviewed every detection scored as wrong and found 46 real objects missing from the test labels; with the labels corrected, precision at the working threshold was 75%, in line with a manual check of 112 live detections.</p>
+          <div class="result">Obstacle detection went from 0.113 to <b>0.361 AP50</b> on the same classes, 3.2 times the client's existing model (tree trunks 0.125 to <b>0.821</b>). Vegetation went from 0.438 to <b>0.818 mIoU</b>. All on test streets held out by GPS location.</div>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">RF-DETR</span><span class="tag">DINOv2</span><span class="tag">OpenCV</span><span class="tag">GeoJSON</span><span class="tag">ROS2</span></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/roadside-cv-pilot" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> Read the case study</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-noimg"><span class="mono">{ } Dutch speech-to-text + evaluation</span></div>
+        <div class="card-body">
+          <div class="card-top"><h3>Dutch speech-to-text for sales calls</h3><span class="role solo">Solo, freelance</span></div>
+          <p>A speech-to-text pipeline I built freelance for a Dutch energy-sales call center: Whisper large-v3-turbo, pyannote speaker diarization, an LLM clean-up step that may change only a limited part of each line, and an evaluation harness (word error rate, compliance-keyword F1, bootstrap confidence intervals) scored against hand-transcribed calls.</p>
+          <div class="result">With Gemini (a cloud model) as the clean-up step: <b>88.2% F1 on compliance keywords</b> (114 keyword mentions in 2 hand-transcribed calls), zero invented text and a 33.6% normalized word error rate.</div>
+          <p>The client wanted call data kept in-house, so I benchmarked 5 local open-weight LLMs against Gemini in 28 scored runs and built the final correction step on Qwen 2.5 7B, which fixes misheard names, suppliers and amounts using the customer's record from the client's API. I did not measure F1 for this local step. An earlier version used fine-tuned Dutch wav2vec2 models.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Whisper</span><span class="tag">pyannote</span><span class="tag">Gemini API</span><span class="tag">Ollama</span></div>
+          <div class="card-links"><span class="card-note">The final code and call data belong to the client, so they are not linked here. I am happy to walk through the pipeline in an interview.</span></div>
         </div>
       </article>
 
@@ -249,32 +279,10 @@
         <div class="card-media"><img src="assets/robotics-pid.gif" alt="Simulated OT-2 robot driven to plant root tips" loading="lazy"></div>
         <div class="card-body">
           <div class="card-top"><h3>Computer vision to robotics</h3><span class="role solo">Solo</span></div>
-          <p>A U-Net finds plant roots in petri-dish photos, then the root tips are mapped into robot coordinates and a simulated lab robot is driven to each one, using both a tuned PID controller and a reinforcement-learning agent.</p>
-          <div class="result">U-Net F1 <b>0.88</b>, both controllers reach <b>under 1 mm</b> in simulation.</div>
+          <p>A U-Net finds plant roots in petri-dish photos, then the root tips are mapped into robot coordinates and a simulated lab robot is driven to each one, using both a PID controller (tuned with 80 Optuna trials) and a PPO reinforcement-learning agent.</p>
+          <div class="result">U-Net validation F1 <b>0.88</b>, both controllers reach <b>under 1 mm</b> in simulation.</div>
           <div class="tags"><span class="tag">PyTorch</span><span class="tag">U-Net</span><span class="tag">PyBullet</span><span class="tag">PPO</span><span class="tag">Optuna</span><span class="tag">OpenCV</span></div>
           <div class="card-links"><a href="https://github.com/moaliii237/ot2-robotics-vision" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-media"><img src="assets/emotionscope.png" alt="EmotionScope emotion analysis interface" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-top"><h3>EmotionScope: MLOps system</h3><span class="role team">Team of 7</span></div>
-          <p>A production system that detects emotion in TV transcripts, from speech-to-text through a fine-tuned model, served by an API and deployed with Docker and Azure. My part was the continuous-retraining feedback loop and the command-line tool.</p>
-          <div class="result">My loop <b>retrains on user corrections</b> and promotes a new model only when it scores higher than the live one.</div>
-          <div class="tags"><span class="tag">FastAPI</span><span class="tag">DeBERTa</span><span class="tag">Whisper</span><span class="tag">Docker</span><span class="tag">Azure ML</span><span class="tag">Airflow</span></div>
-          <div class="card-links"><a href="https://github.com/moaliii237/emotion-analysis-mlops" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-media"><img src="assets/bloomaflowers.png" alt="Blooma Floral Atelier website" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-top"><h3>Blooma Floral Atelier</h3><span class="role solo">Solo, freelance</span></div>
-          <p>A live website I designed and deployed for a flower studio: an elegant, responsive site with a hero, gallery, and enquiry flow, in both English and Dutch. It is online and serving real visitors at bloomaflowers.nl.</p>
-          <div class="result">A <b>real client site, live in production</b>, bilingual (English and Dutch).</div>
-          <div class="tags"><span class="tag">Web</span><span class="tag">Responsive design</span><span class="tag">Bilingual</span><span class="tag">Deployed</span></div>
-          <div class="card-links"><a href="https://bloomaflowers.nl" target="_blank" rel="noopener">Visit live site &#8599;</a></div>
         </div>
       </article>
 
@@ -282,20 +290,54 @@
         <div class="card-media"><img src="assets/research.png" alt="Plant root segmentation output comparison" loading="lazy"></div>
         <div class="card-body">
           <div class="card-top"><h3>Root segmentation research</h3><span class="role solo">Solo</span></div>
-          <p>A controlled study of how the way you cut an image into patches changes both segmentation quality and the actual measurement of root length. I trained a ResUNet across ten configurations and tested the results with proper statistics.</p>
-          <div class="result">Larger patches cut measurement error from <b>24% to 14%</b>, and the best Dice score was not the most accurate at measuring length.</div>
+          <p>A controlled study of how the way you cut an image into patches changes both segmentation quality and the actual measurement of root length. I trained a ResUNet with 10 patch-size and overlap settings and compared them on the 17-image validation set.</p>
+          <div class="result">512 px patches cut root-length error from <b>24.3% to 14.5%</b> compared with 128 px and ran <b>about 9 times faster</b>. The setting with the best Dice score was not the one that measured length best.</div>
           <div class="tags"><span class="tag">PyTorch</span><span class="tag">ResUNet</span><span class="tag">scikit-image</span><span class="tag">SciPy</span></div>
           <div class="card-links"><a href="https://github.com/moaliii237/root-segmentation-research" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
         </div>
       </article>
 
       <article class="card reveal">
-        <div class="card-noimg"><span class="mono">{ } WhatsApp RAG bot</span></div>
+        <div class="card-media"><img src="assets/emotionscope.png" alt="EmotionScope emotion analysis interface" loading="lazy"></div>
         <div class="card-body">
-          <div class="card-top"><h3>WhatsApp RAG chatbot</h3><span class="role team">Team of 2</span></div>
-          <p>A WhatsApp customer-service bot for a Dutch food cooperative. It answers product and pickup questions in Dutch and English, grounded only in the business's own data, with star reviews and order reminders. I wrote the chatbot code.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">RAG</span><span class="tag">WhatsApp API</span></div>
+          <div class="card-top"><h3>EmotionScope: team MLOps project</h3><span class="role team">Team of 7</span></div>
+          <p>A second-year course project: our team of 7 built a system that detects emotion in TV transcripts, from speech-to-text through a fine-tuned DeBERTa model to an API deployed on Azure. My part was the continuous-retraining loop and the command-line tool. The API, Azure deployment, frontend and tests were built by my teammates.</p>
+          <div class="result">My loop <b>retrains on user corrections</b> and only promotes a new model when its F1 beats the live one.</div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Azure ML</span><span class="tag">PostgreSQL</span><span class="tag">DeBERTa</span><span class="tag">Typer CLI</span></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/emotion-analysis-mlops" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
+        </div>
+      </article>
+
+      <article class="card span2 reveal">
+        <div class="card-media"><img src="assets/euphoria-dashboard.png" alt="Euphoria CRM and POS dashboard" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-top"><h3>Euphoria: CRM and POS desktop app</h3><span class="role solo">Solo, my product</span></div>
+          <p>An offline CRM and point-of-sale desktop app I built for my family's tile and ceramics business, used there every day for sales, stock and invoices. It uses an embedded database and is packaged so a shop installs one file with no setup. It has its own offline license system, automatic backups, and an optional local-network mode so several computers share one live database.</p>
+          <div class="result">In daily use at a working shop, with an <b>offline Ed25519 license system</b> and automatic database backups.</div>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Drizzle ORM</span><span class="tag">PostgreSQL</span><span class="tag">Electron</span><span class="tag">TypeScript</span></div>
+          <div class="card-links"><a href="https://github.com/moaliii237/euphoria-pos" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-noimg"><span class="mono">{ } WhatsApp customer-service bot</span></div>
+        <div class="card-body">
+          <div class="card-top"><h3>WhatsApp customer-service chatbot</h3><span class="role team">Team of 2</span></div>
+          <p>A customer-service bot on WhatsApp for a local food business. The shop information is small, so all of it goes into the system prompt and the model is told to answer only from it, with no separate retrieval step. We were a team of 2 and I wrote the bot code.</p>
+          <div class="result">Answers customer questions in <b>Dutch or English</b> from the shop's own information, on a <b>self-hosted LLM</b> with Ollama.</div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">Self-hosted LLM</span><span class="tag">WhatsApp API</span></div>
           <div class="card-links"><a href="https://github.com/moaliii237/whatsapp-rag-chatbot" target="_blank" rel="noopener"><svg><use href="#gh"/></svg> View code</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-media"><img src="assets/bloomaflowers.png" alt="Blooma Floral Atelier website" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-top"><h3>Blooma Floral Atelier</h3><span class="role solo">Solo, freelance</span></div>
+          <p>A live website I designed and deployed for a flower studio: a responsive site with a hero, gallery and enquiry flow, in both English and Dutch. It is online and serving real visitors at bloomaflowers.nl.</p>
+          <div class="result">A <b>real client site, live online</b>, in English and Dutch.</div>
+          <div class="tags"><span class="tag">Web</span><span class="tag">Responsive design</span><span class="tag">Bilingual</span><span class="tag">Deployed</span></div>
+          <div class="card-links"><a href="https://bloomaflowers.nl" target="_blank" rel="noopener">Visit live site &#8599;</a></div>
         </div>
       </article>
 
@@ -303,8 +345,8 @@
 
     <div class="more reveal">
       <a href="https://github.com/moaliii237/skin-type-classifier" target="_blank" rel="noopener"><span><span class="m-t">Skin type image classifier</span><br><span class="m-d">CNN and VGG transfer learning, honest error analysis</span></span><span class="arrow">&#8594;</span></a>
-      <a href="https://github.com/moaliii237/persian-nlp-pipeline" target="_blank" rel="noopener"><span><span class="m-t">Persian NLP pipeline</span><br><span class="m-d">Speech to emotion, my part: speech-to-text and ParsBERT</span></span><span class="arrow">&#8594;</span></a>
-      <a href="https://github.com/moaliii237/stock-forecasting" target="_blank" rel="noopener"><span><span class="m-t">Stock forecasting</span><br><span class="m-d">ARIMA, ML and LSTM on NASDAQ-100</span></span><span class="arrow">&#8594;</span></a>
+      <a href="https://github.com/moaliii237/persian-nlp-pipeline" target="_blank" rel="noopener"><span><span class="m-t">Persian NLP pipeline</span><br><span class="m-d">Team of 3, my part: speech-to-text and a TF-IDF baseline</span></span><span class="arrow">&#8594;</span></a>
+      <a href="https://github.com/moaliii237/stock-forecasting" target="_blank" rel="noopener"><span><span class="m-t">Stock forecasting</span><br><span class="m-d">ARIMA, XGBoost and LSTM vs a naive forecast, none beat it by a meaningful margin</span></span><span class="arrow">&#8594;</span></a>
       <a href="https://github.com/moaliii237/logistic-regression-numpy" target="_blank" rel="noopener"><span><span class="m-t">Logistic regression from scratch</span><br><span class="m-d">Built in NumPy, checked against scikit-learn</span></span><span class="arrow">&#8594;</span></a>
       <a href="https://github.com/moaliii237/stock-anomaly-detection" target="_blank" rel="noopener"><span><span class="m-t">Stock anomaly detection</span><br><span class="m-d">Team project, two-stage LSTM, my part: data and docs</span></span><span class="arrow">&#8594;</span></a>
       <a href="https://github.com/moaliii237" target="_blank" rel="noopener"><span><span class="m-t">All repositories</span><br><span class="m-d">Everything on my GitHub</span></span><span class="arrow">&#8599;</span></a>
@@ -320,11 +362,11 @@
     </div>
     <div class="skills">
       <div class="skill-group reveal"><h4>Languages</h4><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">TypeScript</span></div></div>
-      <div class="skill-group reveal"><h4>Machine learning and computer vision</h4><div class="chips"><span class="chip">scikit-learn</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">XGBoost</span><span class="chip">CNNs</span><span class="chip">Transfer learning</span><span class="chip">Object detection</span><span class="chip">Segmentation</span><span class="chip">OpenCV</span></div></div>
-      <div class="skill-group reveal"><h4>NLP and LLMs</h4><div class="chips"><span class="chip">Hugging Face</span><span class="chip">RAG</span><span class="chip">LangChain</span><span class="chip">Whisper</span><span class="chip">Prompt engineering</span></div></div>
-      <div class="skill-group reveal"><h4>MLOps and cloud</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Azure ML</span><span class="chip">Airflow</span><span class="chip">MLflow</span><span class="chip">CI/CD</span></div></div>
-      <div class="skill-group reveal"><h4>Data and statistics</h4><div class="chips"><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Hypothesis testing</span><span class="chip">A/B testing</span><span class="chip">Power BI</span></div></div>
-      <div class="skill-group reveal"><h4>Web and product</h4><div class="chips"><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Electron</span></div></div>
+      <div class="skill-group reveal"><h4>Machine learning and computer vision</h4><div class="chips"><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">Hugging Face</span><span class="chip">OpenCV</span></div></div>
+      <div class="skill-group reveal"><h4>Speech and LLMs</h4><div class="chips"><span class="chip">Whisper</span><span class="chip">pyannote</span><span class="chip">Open-weight LLMs with Ollama</span><span class="chip">Gemini API</span></div></div>
+      <div class="skill-group reveal"><h4>Deployment and cloud</h4><div class="chips"><span class="chip">Docker</span><span class="chip">FastAPI</span><span class="chip">Azure ML</span></div></div>
+      <div class="skill-group reveal"><h4>Data</h4><div class="chips"><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">PostgreSQL</span><span class="chip">Power BI</span><span class="chip">Git</span></div></div>
+      <div class="skill-group reveal"><h4>Web and apps</h4><div class="chips"><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Electron</span></div></div>
     </div>
   </div>
 </section>
@@ -335,27 +377,31 @@
       <div class="kicker">About</div>
       <h2>A bit about me</h2>
     </div>
-    <p class="reveal">I am <strong>Mohammadali Jaberi</strong>, an Applied Data Science and Artificial Intelligence student at Breda University in the Netherlands. I like building things that run in the real world, from machine learning pipelines to a full desktop app that a real shop uses every day.</p>
-    <p class="reveal">Most of my work sits in two areas: applied machine learning (NLP, large language models, computer vision, time series) and full-stack product development. I care about taking a project all the way to something people can actually use, and about being honest about what does and does not work.</p>
-    <p class="reveal">I speak English and Persian and I am learning Dutch. Right now I am looking for a full-time internship in data science, machine learning or AI from February 2027, arranged through my university's internship agreement. Next to my studies I also take on freelance projects.</p>
+    <p class="reveal">I am <strong>Mohammadali Jaberi</strong>, a third-year Applied Data Science and Artificial Intelligence student at Breda University of Applied Sciences (BUas) in the Netherlands. I like building things that run in the real world, from machine learning pipelines to a full desktop app that a real shop uses every day.</p>
+    <p class="reveal">Most of my work sits in two areas: applied machine learning (computer vision, speech-to-text, NLP, time series) and full-stack product development. I care about taking a project all the way to something people can actually use, and about being honest about what does and does not work.</p>
+    <p class="reveal">I speak English and Persian and I am learning Dutch. Next to my studies I work part-time as a sales assistant at Jack &amp; Jones (BESTSELLER). Right now I am looking for a full-time internship of about 5 months in data science, machine learning or AI from February 2027. The internship runs through a BUas internship agreement (stageovereenkomst) as part of my study, so the employer needs no separate work permit. You can reach me at <a href="mailto:moaliii237@gmail.com">moaliii237@gmail.com</a> or at my BUas student email <a href="mailto:244437@buas.nl">244437@buas.nl</a>.</p>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
     <div class="contact-card reveal">
-      <h2>Let's work together</h2>
-      <p>Looking for a data science or AI intern from February 2027? Send me a message and I will reply quickly. Have a problem you want solved with AI, data or software? Tell me about it and I will come back with a short, concrete plan.</p>
+      <h2>Hiring an intern for February 2027?</h2>
+      <p>I am looking for a full-time data science, machine learning or AI internship of about 5 months, arranged through a BUas internship agreement. Send me a message and I will reply quickly.</p>
       <div class="contact-row">
         <a class="btn btn-primary magnetic" href="mailto:moaliii237@gmail.com">moaliii237@gmail.com</a>
+        <a class="btn btn-ghost magnetic" href="mailto:244437@buas.nl">244437@buas.nl (BUas student email)</a>
+        <a class="btn btn-ghost magnetic" href="Mohammadali_Jaberi_CV.pdf" target="_blank" rel="noopener">Download my CV</a>
         <a class="btn btn-ghost magnetic" href="https://github.com/moaliii237" target="_blank" rel="noopener">GitHub</a>
       </div>
+      <p class="contact-note">Have a smaller freelance project in mind? The same Gmail address works for that too.</p>
     </div>
   </div>
 </section>
 
 <footer class="wrap">
-  <span>Mohammadali Jaberi - Netherlands</span>
+  <span>Mohammadali Jaberi, Netherlands</span>
+  <span>BUas student email: <a href="mailto:244437@buas.nl">244437@buas.nl</a></span>
   <span>Built and designed by me</span>
 </footer>
 
