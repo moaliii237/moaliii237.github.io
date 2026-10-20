@@ -267,10 +267,10 @@
         <div class="card-noimg"><span class="mono">{ } Dutch speech-to-text + evaluation</span></div>
         <div class="card-body">
           <div class="card-top"><h3>Dutch speech-to-text for sales calls</h3><span class="role solo">Solo, freelance</span></div>
-          <p>A speech-to-text pipeline I built freelance for a Dutch energy-sales call center: Whisper large-v3-turbo, pyannote speaker diarization, an LLM clean-up step that may change only a limited part of each line, and an evaluation harness (word error rate, compliance-keyword F1, bootstrap confidence intervals) scored against hand-transcribed calls.</p>
-          <div class="result">With Gemini (a cloud model) as the clean-up step: <b>88.2% F1 on compliance keywords</b> (114 keyword mentions in 2 hand-transcribed calls), zero invented text and a 33.6% normalized word error rate.</div>
-          <p>The client wanted call data kept in-house, so I benchmarked 5 local open-weight LLMs against Gemini in 28 scored runs and built the final correction step on Qwen 2.5 7B, which fixes misheard names, suppliers and amounts using the customer's record from the client's API. I did not measure F1 for this local step. An earlier version used fine-tuned Dutch wav2vec2 models.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Whisper</span><span class="tag">pyannote</span><span class="tag">Gemini API</span><span class="tag">Ollama</span></div>
+          <p>A speech-to-text pipeline I built freelance for a Dutch energy-sales call center. Whisper large-v3-turbo and pyannote speaker diarization turn each sales call into a transcript. Then a correction step fixes misheard names, e-mails, suppliers and amounts using that customer's record from the client's CRM API. The correction runs on a local LLM (Qwen 2.5 7B with Ollama), so no call data leaves the client's machine.</p>
+          <div class="result">I picked the local model after benchmarking <b>5 open-weight LLMs in 28 scored runs</b> with my own evaluation harness (word error rate, compliance-keyword F1, bootstrap confidence intervals) against hand-transcribed calls.</div>
+          <p>An early prototype used a cloud model for the clean-up and reached 88.2% F1 on compliance keywords (114 keyword mentions in 2 hand-transcribed calls) with zero invented text. I did not measure F1 for the final CRM version. Before that, a first version used fine-tuned Dutch wav2vec2 models.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Whisper</span><span class="tag">pyannote</span><span class="tag">Ollama</span><span class="tag">Qwen 2.5</span><span class="tag">CRM API</span></div>
           <div class="card-links"><span class="card-note">The final code and call data belong to the client, so they are not linked here. I am happy to walk through the pipeline in an interview.</span></div>
         </div>
       </article>
@@ -363,7 +363,7 @@
     <div class="skills">
       <div class="skill-group reveal"><h4>Languages</h4><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">TypeScript</span></div></div>
       <div class="skill-group reveal"><h4>Machine learning and computer vision</h4><div class="chips"><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">Hugging Face</span><span class="chip">OpenCV</span></div></div>
-      <div class="skill-group reveal"><h4>Speech and LLMs</h4><div class="chips"><span class="chip">Whisper</span><span class="chip">pyannote</span><span class="chip">Open-weight LLMs with Ollama</span><span class="chip">Gemini API</span></div></div>
+      <div class="skill-group reveal"><h4>Speech and LLMs</h4><div class="chips"><span class="chip">Whisper</span><span class="chip">pyannote</span><span class="chip">Open-weight LLMs with Ollama</span><span class="chip">REST API integration</span></div></div>
       <div class="skill-group reveal"><h4>Deployment and cloud</h4><div class="chips"><span class="chip">Docker</span><span class="chip">FastAPI</span><span class="chip">Azure ML</span></div></div>
       <div class="skill-group reveal"><h4>Data</h4><div class="chips"><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">PostgreSQL</span><span class="chip">Power BI</span><span class="chip">Git</span></div></div>
       <div class="skill-group reveal"><h4>Web and apps</h4><div class="chips"><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Electron</span></div></div>
